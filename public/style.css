@@ -1,71 +1,210 @@
-/* styles */
-/* called by your view template */
+
+/* =================================
+   ALT1 Tutorial - Modern Theme
+   ================================= */
+
+:root {
+  --background: #0b1020;
+  --surface: #151d33;
+  --surface-light: #202b45;
+  --primary: #8b5cf6;
+  --secondary: #38bdf8;
+  --text: #f1f5f9;
+  --muted: #a5b4cc;
+  --border: rgba(255, 255, 255, 0.1);
+}
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 2em;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 40px 24px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top left, #25205a 0%, transparent 45%),
+    radial-gradient(ellipse at bottom right, #102d50 0%, transparent 45%),
+    var(--background);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Headings */
+
+h1, h2, h3 {
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 18px;
 }
 
 h1 {
-  font-style: italic;
-  color: #373fff;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(90deg, #a78bfa, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.bold {
-  font-weight: bold;
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.3rem;
 }
 
 p {
-  max-width: 600px;
+  max-width: 650px;
+  color: var(--muted);
+  margin-bottom: 20px;
 }
+
+.bold {
+  font-weight: 700;
+  color: white;
+}
+
+/* Forms */
 
 form {
-  margin-bottom: 25px;
-  padding: 15px;
-  background-color: cyan;
-  display: inline-block;
+  margin: 25px 0;
+  padding: 28px;
+  background: rgba(21, 29, 51, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  display: block;
   width: 100%;
-  max-width: 340px;
-  border-radius: 3px;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.3s, transform 0.3s;
 }
 
-input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  font-size: 16px;
+form:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-3px);
 }
+
+/* Inputs */
+
+input,
+textarea,
+select {
+  display: block;
+  margin: 12px 0 18px;
+  padding: 13px 15px;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0d1529;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.25s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #71809c;
+}
+
+/* Buttons */
 
 button {
   font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
+  font-weight: 700;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  box-shadow: 0 5px 18px rgba(99, 102, 241, 0.25);
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 button:hover {
-  background-color: yellow;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+  filter: brightness(1.15);
 }
 
 button:active {
-  box-shadow: none;
+  transform: translateY(0);
 }
+
+/* Links */
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #a78bfa;
+  text-decoration: underline;
+}
+
+/* Lists */
 
 li {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  color: var(--muted);
 }
 
+ul, ol {
+  padding-left: 25px;
+}
+
+/* Footer */
+
 footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid lightgrey;
+  margin-top: 70px;
+  padding: 25px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Selection */
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* Mobile support */
+
+@media (max-width: 600px) {
+  body {
+    padding: 24px 16px;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
+
+  button {
+    width: 100%;
+  }
 }
