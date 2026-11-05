@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+div.sticky {
+  position: sticky;
+  top: 0;
+  background-color: green;
+  border: 2px solid #4CAF50;
+}
+
 #Nav_Bar {
   list-style-type: none;
   margin: 0;
