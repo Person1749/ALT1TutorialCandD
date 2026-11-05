@@ -8,7 +8,7 @@
 #Nav_Bar {
   list-style-type: none;
   margin: 0;
-  padding: -2;
+  padding: 0, -2;
   overflow: hidden;
   background-color: #663a82;
 }
@@ -26,7 +26,7 @@
 }
 
 #Nav_Bar li a:hover {
-  background-color: #3c1361;
+  background-color: green;
 }
 
 body {
