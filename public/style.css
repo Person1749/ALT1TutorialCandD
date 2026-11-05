@@ -30,7 +30,7 @@ form {
   display: inline-block;
   width: 100%;
   max-width: 340px;
-  border-radius: 3px;
+  border-radius: 25px;
 }
 
 input {
