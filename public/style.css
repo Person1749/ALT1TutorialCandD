@@ -5,6 +5,23 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Enamel Brush';
+  src: url('fonts/EnamelBrush-Regular.woff2') format('woff2'),
+       url('fonts/EnamelBrush-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+  font-family: sans-serif;
+}
+
+h1, .brush-headline {
+  font-family: 'Enamel Brush', sans-serif;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+}
 #Nav_Bar {
   list-style-type: none;
   margin: 0;
