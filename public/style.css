@@ -17,11 +17,6 @@
   font-family: sans-serif;
 }
 
-h1, .brush-headline {
-  font-family: 'Enamel Brush', sans-serif;
-  font-size: 3.5rem;
-  text-transform: uppercase;
-}
 #Nav_Bar {
   list-style-type: none;
   margin: 0;
@@ -47,7 +42,7 @@ h1, .brush-headline {
 }
 
 body {
-  font-family: Enamel Brush;
+  font-family: 'Enamel Brush';
   margin: 2em;
   background-color: yellow;
 }
