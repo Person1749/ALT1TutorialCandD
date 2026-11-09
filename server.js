@@ -41,19 +41,33 @@ let db = new sqlite3.Database('bank.db'); // database name
 
 // Process the HTTP POST request for /putData
 app.post("/putData", function (request, response) {
-console.log("In app.post (/putData)");
-// build up insert statement. For example:
-// insert into person(first_name, surname) values ('Joe', 'Bloggs')
-let insStr = "insert into person(first_name, surname) values (";
-insStr = insStr + "\'"+request.body.fname+"\', ";
-insStr = insStr + "\'"+request.body.sname+"\') ";
-db.run(insStr);
+  console.log("In app.post (/putData)");
+
+  // These property names match the object sent by public/client.js.
+  const { Iban, Pin, Dep_amount } = request.body;
+  db.run(
+    "INSERT INTO person (Iban, Pin, Dep_amount) VALUES (?, ?, ?)",
+    [Iban, Pin, Dep_amount],
+    function (err) {
+      if (err) {
+        console.error("DB error:", err.message);
+        response.status(500).send("Database error");
+        return;
+      }
+      response.sendStatus(201);
+    }
+  );
 });
 
 // Process the HTTP GET request for /getData
 app.get('/getData', function(request, response) {
 console.log("In app.get (/getData)");
 db.all('SELECT * from person', function(err, rows) {
-response.send(JSON.stringify(rows));
+  if (err) {
+    console.error("DB error:", err.message);
+    response.status(500).send("Database error");
+    return;
+  }
+  response.send(JSON.stringify(rows));
 });
 });
