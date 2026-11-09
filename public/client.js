@@ -2,47 +2,67 @@ console.log("Client-side log HOK");
 const btn = document.getElementById("submit-btn");
 btn.addEventListener("click", submitDataToServer);
 
-// Submit clicked so post the data to the server
-function submitDataToServer() {
-  console.log("SUBMIT clicked!!!"); // display a message
-  // create an object to post to the server
-  // IMPORTANT: ONE NAME - VALUE PAIR FOR EACH FIELD
-  let dataObj = {
+// Submit the form data to the server.
+function submitDataToServer(event) {
+  event.preventDefault();
+
+  const dataObj = {
     Iban: document.getElementById("IBAN").value,
     Pin: document.getElementById("PIN").value,
     Dep_amount: document.getElementById("DepAm").value,
   };
-  // JUST USE THESE LINES AS THEY ARE - NO NEED TO CHANGE
-  event.preventDefault(); // prevents 2 calls to this function!!
+
   const requestMsg = new XMLHttpRequest();
-  requestMsg.open("post", "/putData", true); // open a HTTP post request
+  requestMsg.open("post", "/putData", true);
   requestMsg.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  requestMsg.addEventListener("load", function () {
+    if (requestMsg.status < 200 || requestMsg.status >= 300) {
+      console.error("Could not save entry:", requestMsg.responseText);
+      alert("Could not save the entry. Please try again.");
+      return;
+    }
+    getDataFromServer();
+  });
+  requestMsg.addEventListener("error", function () {
+    console.error("Network error while saving entry.");
+    alert("Could not reach the server. Please try again.");
+  });
   requestMsg.send(JSON.stringify(dataObj));
 }
 
-// Make sure to call this function to get latest data
+// Load and display the latest entries.
 getDataFromServer();
-// Send a request to the server to query the db and send the data back
 function getDataFromServer() {
-  console.log("getData()"); // display a debug message
-  // request the data from the database
   const requestMsg = new XMLHttpRequest();
-  requestMsg.addEventListener("load", displayData); // attach a listener
-  requestMsg.open("get", "/getData"); // open a HTTP GET request
+  requestMsg.addEventListener("load", function () {
+    if (requestMsg.status < 200 || requestMsg.status >= 300) {
+      console.error("Could not load entries:", requestMsg.responseText);
+      return;
+    }
+    displayData(requestMsg.responseText);
+  });
+  requestMsg.addEventListener("error", function () {
+    console.error("Network error while loading entries.");
+  });
+  requestMsg.open("get", "/getData");
   requestMsg.send();
 }
 
-function displayData() {
-  console.log("displayData()");
-  // define variables that reference elements on our page
-  const rowList = document.getElementById("users");
-  rowList.innerHTML = ""; // clear all the list items
-  // parse our response to convert to JSON
-  let users = JSON.parse(this.responseText);
-  // iterate through every row and add it to our page
-  users.forEach(function (row) {
-    const newListItem = document.createElement("li");
-    newListItem.innerHTML = row["first_name"] + " " + row["surname"];
-    rowList.appendChild(newListItem);
+function displayData(responseText) {
+  const entryList = document.getElementById("Entries");
+  entryList.innerHTML = "";
+
+  let entries;
+  try {
+    entries = JSON.parse(responseText);
+  } catch (error) {
+    console.error("Invalid response from server:", error);
+    return;
+  }
+
+  entries.forEach(function (row) {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${row.Iban} — €${row.Dep_amount}`;
+    entryList.appendChild(listItem);
   });
 }
