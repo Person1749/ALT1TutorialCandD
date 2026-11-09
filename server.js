@@ -36,7 +36,7 @@ listener.address().port);
 
 // Create the database object
 const sqlite3 = require('sqlite3').verbose();
-let db = new sqlite3.Database('DEMODB'); // database name
+let db = new sqlite3.Database('bank.db'); // database name
 
 
 // Process the HTTP POST request for /putData
