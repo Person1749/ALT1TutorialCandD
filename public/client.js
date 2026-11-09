@@ -8,8 +8,9 @@ function submitDataToServer() {
   // create an object to post to the server
   // IMPORTANT: ONE NAME - VALUE PAIR FOR EACH FIELD
   let dataObj = {
-    fname: document.getElementById("IBAN").value,
-    sname: document.getElementById("PIN").value,
+    Iban: document.getElementById("IBAN").value,
+    Pin: document.getElementById("PIN").value,
+    Dep_amount: document.getElementById("DepAm").value,
   };
   // JUST USE THESE LINES AS THEY ARE - NO NEED TO CHANGE
   event.preventDefault(); // prevents 2 calls to this function!!
