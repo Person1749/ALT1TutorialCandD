@@ -76,21 +76,29 @@ input {
   font-size: 16px;
 }
 
-button {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
-  cursor: pointer;
+.btn-grad {
+  background-image: linear-gradient(to right, #348F50 0%, #56B4D3 51%, #348F50 100%);
 }
 
-button:hover {
-  background-color: red;
+.btn-grad {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  outline: none;
+  border: none;
 }
 
-button:active {
-  box-shadow: none;
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
 li {
