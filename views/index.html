@@ -1,6 +1,3 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,29 +15,37 @@
         <li><a>Login</a></li>
       </ul>
     </div>
+
     <header>
-      <h1>
-        How much money do you want to deposit?
-      </h1>
+      <h1>How much money do you want to deposit?</h1>
     </header>
+
     <main>
-      <h3>User </h3>
-      <form>
-        <label>IBAN:</label>
-        <input id="IBAN" type="text" placeholder="1234567891234567891234" /> <br /><br />
-        <label>PIN:</label>
-        <input id="PIN" type="text" placeholder="2468" /> <br /><br />
-        <label>Deposit amount:</label>
-        <input id="DepAm" type="number" step="any" placeholder="€10000000" /> <br /><br />
+      <section>
+        <h3>Register an account</h3>
+        <form id="register-form">
+          <label>New IBAN:</label>
+          <input id="register-IBAN" type="text" placeholder="1234567891234567891234" /> <br /><br />
+          <label>New PIN:</label>
+          <input id="register-PIN" type="text" placeholder="2468" /> <br /><br />
+          <button id="register-btn" type="submit">Register</button>
+        </form>
+      </section>
 
-        <!-- REALLY IMPORTANT to get this to work!! -->
-        <!-- Error in the sample code from JE... missing id="submit-btn" HOK -->
-        <button id="submit-btn" type="submit">Submit</button>
+      <section>
+        <h3>User</h3>
+        <form id="deposit-form">
+          <label>IBAN:</label>
+          <input id="IBAN" type="text" placeholder="1234567891234567891234" /> <br /><br />
+          <label>PIN:</label>
+          <input id="PIN" type="text" placeholder="2468" /> <br /><br />
+          <label>Deposit amount:</label>
+          <input id="DepAm" type="number" step="any" placeholder="€10000000" /> <br /><br />
 
-        <!-- found on w3school -->
-        <!--<button id="myBtn" type="button" value="Submit">Submit</button> -->
-      </form>
-      <!-- TUTORIAL D -->
+          <button id="submit-btn" type="submit">Submit</button>
+        </form>
+      </section>
+
       <p>Entries:</p>
       <section>
         <ul id="Entries"></ul>
