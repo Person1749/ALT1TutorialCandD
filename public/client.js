@@ -8,8 +8,7 @@ function submitDataToServer(event) {
 
   const dataObj = {
     Iban: document.getElementById("IBAN").value,
-    Pin: document.getElementById("PIN").value,
-    Dep_amount: document.getElementById("DepAm").value,
+    Deposit: document.getElementById("DepAm").value,
   };
 
   const requestMsg = new XMLHttpRequest();
@@ -62,7 +61,7 @@ function displayData(responseText) {
 
   entries.forEach(function (row) {
     const listItem = document.createElement("li");
-    listItem.textContent = `${row.Iban} — €${row.Dep_amount}`;
+    listItem.textContent = `${row.Iban} — €${row.Deposit}`;
     entryList.appendChild(listItem);
   });
 }
