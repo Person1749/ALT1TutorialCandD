@@ -39,20 +39,14 @@ const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('DEMODB'); // database name
 
 
-// Process the HTTP POST request for /putData
-const { Iban, Pin, Dep_amount } = request.body;
-db.run(
-  "INSERT INTO person (Iban, Pin, Dep_amount) VALUES (?, ?, ?)",
-  [Iban, Pin, Dep_amount],
-  function (err) {
-    if (err) {
-      console.error("DB error:", err.message);
-      response.status(500).send("Database error");
-      return;
-    }
-    response.sendStatus(201);
-  }
-);
+app.post("/putData", function (request, response) {
+console.log("In app.post (/putData)");
+// build up insert statement. For example:
+// insert into person(first_name, surname) values ('Joe', 'Bloggs')
+let insStr = "insert into person(first_name, surname) values (";
+insStr = insStr + "\'"+request.body.fname+"\', ";
+insStr = insStr + "\'"+request.body.sname+"\') ";
+db.run(insStr);
 });
 
 // Process the HTTP GET request for /getData
