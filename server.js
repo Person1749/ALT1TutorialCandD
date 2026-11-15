@@ -40,19 +40,34 @@ let db = new sqlite3.Database('DEMODB'); // database name
 
 
 app.post("/putData", function (request, response) {
-console.log("In app.post (/putData)");
-// build up insert statement. For example:
-// insert into person(first_name, surname) values ('Joe', 'Bloggs')
-let insStr = "insert into person(Iban, Deposit) values (";
-insStr = insStr + "\'"+request.body.fname+"\', ";
-insStr = insStr + "\'"+request.body.sname+"\') ";
-db.run(insStr);
+  console.log("In app.post (/putData)");
+  const { Iban, Deposit } = request.body;
+
+  if (!Iban || Deposit === undefined || Deposit === "") {
+    return response.status(400).send("IBAN and deposit amount are required.");
+  }
+
+  db.run(
+    "INSERT INTO person (Iban, Deposit) VALUES (?, ?)",
+    [Iban, Number(Deposit)],
+    function (err) {
+      if (err) {
+        console.error("DB error:", err.message);
+        return response.status(500).send("Could not save entry.");
+      }
+      response.sendStatus(201);
+    }
+  );
 });
 
 // Process the HTTP GET request for /getData
 app.get('/getData', function(request, response) {
 console.log("In app.get (/getData)");
 db.all('SELECT * from person', function(err, rows) {
-response.send(JSON.stringify(rows));
+  if (err) {
+    console.error("DB error:", err.message);
+    return response.status(500).send("Could not load entries.");
+  }
+  response.json(rows);
 });
 });
