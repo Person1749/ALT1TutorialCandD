@@ -62,7 +62,7 @@ form {
   background-image: linear-gradient(to right, #0099FF 0%, #FF0099 20%, #6600FF 40%, #99FF00 60%, #FF33FF 80%, #33FFFF 100%);
   display: inline-block;
   width: 100%;
-  max-width: 800px;
+  max-width: 1500px;
   border-radius: 550px;
 }
 
