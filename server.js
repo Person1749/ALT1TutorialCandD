@@ -41,9 +41,8 @@ let db = new sqlite3.Database('DEMODB'); // database name
 
 app.post("/putData", function (request, response) {
   console.log("In app.post (/putData)");
-  const { Iban, Deposit } = request.body;
+  const { Iban, PIN, Deposit } = request.body;
 
-  
   if (!/^\d{4}$/.test(PIN || "")) {
     return response.status(400).send("A four-digit PIN is required.");
   }
