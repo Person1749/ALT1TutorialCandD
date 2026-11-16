@@ -6,10 +6,16 @@ btn.addEventListener("click", submitDataToServer);
 function submitDataToServer(event) {
   event.preventDefault();
 
+  const pin = document.getElementById("PIN").value;
+  if (!/^\d{4}$/.test(pin)) {
+    alert("Please enter a four-digit PIN.");
+    return;
+  }
+
   const dataObj = {
     Iban: document.getElementById("IBAN").value,
-    Pin: document.getElementById("PIN").value,
-    Dep_amount: document.getElementById("DepAm").value,
+    PIN: pin,
+    Deposit: document.getElementById("DepAm").value,
   };
 
   const requestMsg = new XMLHttpRequest();
@@ -62,7 +68,7 @@ function displayData(responseText) {
 
   entries.forEach(function (row) {
     const listItem = document.createElement("li");
-    listItem.textContent = `${row.Iban} — €${row.Dep_amount}`;
+    listItem.textContent = `${row.Iban} — €${row.Deposit}`;
     entryList.appendChild(listItem);
   });
 }

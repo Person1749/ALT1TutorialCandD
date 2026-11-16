@@ -62,8 +62,10 @@ form {
   background-color: cyan;
   display: inline-block;
   width: 100%;
-  max-width: 340px;
-  border-radius: 25px;
+  height: 200%;
+  max-height: 1000px;
+  max-width: 800px;
+  border-radius: 550px;
 }
 
 input {
@@ -76,11 +78,11 @@ input {
   font-size: 16px;
 }
 
-.btn-grad {
+.submit-btn {
   background-image: linear-gradient(to right, #348F50 0%, #56B4D3 51%, #348F50 100%);
 }
 
-.btn-grad {
+.submit-btn {
   margin: 10px;
   padding: 15px 45px;
   text-align: center;
@@ -95,7 +97,7 @@ input {
   border: none;
 }
 
-.btn-grad:hover {
+.submit-btn:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;
