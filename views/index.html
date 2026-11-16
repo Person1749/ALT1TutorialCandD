@@ -25,7 +25,7 @@
           <label>IBAN:</label>
           <input id="IBAN" type="text" placeholder="1234567891234567891234" /> <br /><br />
           <label>PIN:</label>
-          <input id="PIN" type="text" placeholder="2468" /> <br /><br />
+          <input id="PIN" type="text" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" required placeholder="2468" /> <br /><br />
           <label>Deposit amount:</label>
           <input id="DepAm" type="number" step="any" placeholder="€10000000" /> <br /><br />
 
