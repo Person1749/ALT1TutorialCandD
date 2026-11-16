@@ -62,8 +62,8 @@ form {
   background-color: cyan;
   display: inline-block;
   width: 100%;
-  max-width: 340px;
-  border-radius: 99px;
+  max-width: 800px;
+  border-radius: 550px;
 }
 
 input {
