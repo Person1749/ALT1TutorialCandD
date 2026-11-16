@@ -14,6 +14,7 @@ function submitDataToServer(event) {
 
   const dataObj = {
     Iban: document.getElementById("IBAN").value,
+    PIN: pin,
     Deposit: document.getElementById("DepAm").value,
   };
 
