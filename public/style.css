@@ -35,6 +35,7 @@ div.sticky {
 
 #Nav_Bar li a:hover {
   background-color: green;
+  border-radius: 12px;
 }
 
 body {
