@@ -76,11 +76,11 @@ input {
   font-size: 16px;
 }
 
-.submit-btn {
+#submit-btn {
   background-image: linear-gradient(to right, #348F50 0%, #56B4D3 51%, #348F50 100%);
 }
 
-.submit-btn {
+#submit-btn {
   margin: 10px;
   padding: 15px 45px;
   text-align: center;
@@ -95,7 +95,7 @@ input {
   border: none;
 }
 
-.submit-btn:hover {
+#submit-btn:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;
