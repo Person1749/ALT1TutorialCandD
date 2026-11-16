@@ -6,8 +6,15 @@ btn.addEventListener("click", submitDataToServer);
 function submitDataToServer(event) {
   event.preventDefault();
 
+  const pin = document.getElementById("PIN").value;
+  if (!/^\d{4}$/.test(pin)) {
+    alert("Please enter a four-digit PIN.");
+    return;
+  }
+
   const dataObj = {
     Iban: document.getElementById("IBAN").value,
+    PIN: pin,
     Deposit: document.getElementById("DepAm").value,
   };
 
